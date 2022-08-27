@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext,"fetched ${post!!.size} posts", Toast.LENGTH_LONG)
                         .show()
 
-                    var postAdapter = PostRvAdapter(baseContext,post)
+                    var postAdapter = PostRvAdapter(post)
                     binding.rvPost.layoutManager = LinearLayoutManager(baseContext)
                     binding.rvPost.adapter =postAdapter
                 }

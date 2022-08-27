@@ -1,12 +1,13 @@
 package com.winnie.mypost
 
-import android.content.Context
+
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.winnie.mypost.databinding.PostListItemBinding
 
-class PostRvAdapter (var context: Context, var postList: List<Post>):
+class PostRvAdapter ( var postList: List<Post>):
     RecyclerView.Adapter<PostRvAdapter.RetrofitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RetrofitViewHolder {
@@ -22,6 +23,12 @@ class PostRvAdapter (var context: Context, var postList: List<Post>):
         holder.binding.tvId.text = currentPost.id.toString()
         holder.binding.tvTitle.text=currentPost.title
         holder.binding.tvBody.text = currentPost.body
+        val context = holder.itemView.context
+        holder.binding.cvPosts.setOnClickListener {
+            val intent = Intent(context, CommentsActivity::class.java)
+            intent.putExtra("POST_ID", currentPost.id)
+            context.startActivity(intent)
+        }
 
     }
 
